@@ -34,14 +34,14 @@ export default class Lists extends React.Component {
   }
 
   _handleQueryChange = searchText => {
-    this.setState({ searchText }, () => {
-      this._executeSearch();
-    });
-    //   track('update query', global.nativePerformanceNow(), () => {
-    //     this.setState({ searchText }, () => {
-    //       this._executeSearch();
-    //     });
-    //   })
+    // this.setState({ searchText }, () => {
+    //   this._executeSearch();
+    // });
+      track('update query', global.nativePerformanceNow(), () => {
+        this.setState({ searchText }, () => {
+          this._executeSearch();
+        });
+      })
   };
 
   _executeSearch = () => {
@@ -52,11 +52,11 @@ export default class Lists extends React.Component {
         country.code.toLowerCase().includes(q)
     );
 
-    this.setState({ data });
+    // this.setState({ data });
     // // on newer versions of react, use trace instead
-    // track('update search data', global.nativePerformanceNow(), () => {
-    //   this.setState({ data });
-    // });
+    track('update search data', global.nativePerformanceNow(), () => {
+      this.setState({ data });
+    });
   };
 
   _renderItem = ({ item }) => {

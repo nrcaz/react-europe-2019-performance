@@ -49,7 +49,7 @@ class Button extends React.Component {
   }
 }
 
-@connect(store => ({ count: store.count, user: store.user }))
+@connect(store => ({ user: store.user }))
 class Home extends React.Component {
   static navigationOptions = {
     header: null,
